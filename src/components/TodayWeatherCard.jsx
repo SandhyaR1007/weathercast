@@ -1,5 +1,6 @@
 import React from "react";
 import { GET_ICON } from "../services/apiUrls";
+import { convertKelvinToCelsius } from "../utils";
 
 const TodayWeatherCard = ({ weatherData }) => {
   return (
@@ -9,7 +10,8 @@ const TodayWeatherCard = ({ weatherData }) => {
           <img src={`${GET_ICON}${weatherData?.icon}@4x.png`} alt="" />
         </h1>
         <h1 className="text-4xl mt-28">
-          {weatherData?.temp}°<sup className="text-3xl">F</sup>
+          {convertKelvinToCelsius(weatherData?.temp)}°
+          <span className="text-3xl">C</span>
         </h1>
         <h5>{weatherData?.main}</h5>
         <p>{weatherData?.description}</p>
