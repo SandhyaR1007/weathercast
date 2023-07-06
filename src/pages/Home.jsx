@@ -8,9 +8,11 @@ import {
   WeatherMap,
 } from "../components";
 import { useLocationContext } from "../context/LocationContext";
+import Loader from "../components/Loader";
 
 const Home = () => {
-  const { coordinates, setWeatherDetails } = useLocationContext();
+  const { coordinates, setWeatherDetails, loading, setLoading } =
+    useLocationContext();
   const [weatherData, setWeatherData] = useState([]);
   const [highlightsData, setHighlightsData] = useState({});
   useEffect(() => {
@@ -19,6 +21,7 @@ const Home = () => {
     }
   }, [coordinates]);
   const getTodaysWeather = async () => {
+    setLoading(true);
     try {
       const response = await getTodaysWeatherService(
         coordinates?.lat,
@@ -44,18 +47,26 @@ const Home = () => {
       }
     } catch (err) {
       console.log({ err });
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 200);
     }
   };
   return (
     <div className="grid grid-cols-1  lg:grid-cols-3 gap-3">
       <div className="col-span-1 ">
-        <TodayWeatherCard weatherData={weatherData} />
+        {loading ? <Loader /> : <TodayWeatherCard weatherData={weatherData} />}
       </div>
       <div className="col-span-1 md:col-span-2 ">
-        <HighlightsContainer highlightsData={highlightsData} />
+        {loading ? (
+          <Loader />
+        ) : (
+          <HighlightsContainer highlightsData={highlightsData} />
+        )}
       </div>
       <div className="col-span-1 ">
-        <ForecastList />
+        {loading ? <Loader /> : <ForecastList />}
       </div>
       <div className="col-span-1 md:col-span-2  rounded-md p-1 h-[450px]">
         <WeatherMap />

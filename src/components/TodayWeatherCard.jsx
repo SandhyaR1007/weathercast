@@ -9,10 +9,12 @@ const TodayWeatherCard = ({ weatherData }) => {
         <h1 className="absolute -top-14">
           <img src={`${GET_ICON}${weatherData?.icon}@4x.png`} alt="" />
         </h1>
-        <h1 className="text-4xl mt-28">
-          {convertKelvinToCelsius(weatherData?.temp)}°
-          <span className="text-3xl">C</span>
-        </h1>
+        {weatherData?.temp && (
+          <h1 className="text-4xl mt-28">
+            {convertKelvinToCelsius(weatherData?.temp)}°
+            <span className="text-3xl">C</span>
+          </h1>
+        )}
         <h5>{weatherData?.main}</h5>
         <p>{weatherData?.description}</p>
       </div>
