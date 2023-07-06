@@ -1,39 +1,41 @@
 import React from "react";
 import HighlightCard from "./HighlightCard";
+import moment from "moment";
 
-const HighlightsContainer = () => {
-  const highlightsData = [
+const HighlightsContainer = ({ highlightsData }) => {
+  console.log(highlightsData);
+  const data = [
     {
       name: "Wind",
-      value: "5.14km/h",
+      value: `${highlightsData?.speed}km/h`,
     },
     {
       name: "Humidity",
-      value: "80%",
+      value: `${highlightsData?.humidity}%`,
     },
     {
       name: "Feels Like",
-      value: "298.59",
+      value: `${highlightsData?.feels_like}`,
     },
     {
       name: "Visibility",
-      value: "1000",
+      value: `${Number(highlightsData?.visibility) / 100}km`,
     },
     {
       name: "Sunrise",
-      value: "1688528742",
+      value: `${moment(highlightsData?.sunrise).format("LT")}`,
     },
     {
       name: "Sunset",
-      value: "1688584262",
+      value: `${moment(highlightsData?.sunset).format("LT")}`,
     },
   ];
   return (
-    <div className=" border flex flex-col rounded-3xl shadow-sm px-5 py-2 h-80 custom-blur text-white gap-5">
-      <h3 className="text-sm">Today's Highlights</h3>
+    <div className=" border flex flex-col rounded-3xl shadow-sm px-5 py-2 h-80  text-white gap-5  bg-black/50 border-none">
+      <h3 className="text-lg mb-2">Today's Highlights</h3>
       <div className="grid grid-cols-3 gap-5">
-        {highlightsData.map((data) => (
-          <HighlightCard data={data} key={data.name} />
+        {data?.map((value) => (
+          <HighlightCard data={value} key={value.name} />
         ))}
       </div>
     </div>
