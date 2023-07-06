@@ -5,23 +5,35 @@ import {
   ForecastList,
   HighlightsContainer,
   TodayWeatherCard,
+  WeatherMap,
 } from "../components";
+import { useLocationContext } from "../context/LocationContext";
 
 const Home = () => {
+  const { coordinates, setWeatherDetails } = useLocationContext();
   const [weatherData, setWeatherData] = useState([]);
   const [highlightsData, setHighlightsData] = useState({});
   useEffect(() => {
-    getTodaysWeather();
-  }, []);
+    if (coordinates?.lat) {
+      getTodaysWeather();
+    }
+  }, [coordinates]);
   const getTodaysWeather = async () => {
     try {
-      const response = await getTodaysWeatherService(41.34, 10.99);
+      const response = await getTodaysWeatherService(
+        coordinates?.lat,
+        coordinates?.lon
+      );
       if (response.status === 200) {
         const data = response.data;
         setWeatherData({
           ...data?.weather[0],
           temp: data?.main?.temp,
           place: data?.name,
+        });
+        setWeatherDetails({
+          icon: data?.weather[0].icon,
+          description: data?.weather[0].main,
         });
         setHighlightsData({
           ...data?.main,
@@ -45,7 +57,9 @@ const Home = () => {
       <div className="col-span-1 ">
         <ForecastList />
       </div>
-      <div className="col-span-2 border">Map</div>
+      <div className="col-span-2  rounded-md p-1 h-[450px]">
+        <WeatherMap />
+      </div>
     </div>
   );
 };
