@@ -47,17 +47,17 @@ const Home = () => {
     }
   };
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-1  lg:grid-cols-3 gap-3">
       <div className="col-span-1 ">
         <TodayWeatherCard weatherData={weatherData} />
       </div>
-      <div className="col-span-2 ">
+      <div className="col-span-1 md:col-span-2 ">
         <HighlightsContainer highlightsData={highlightsData} />
       </div>
       <div className="col-span-1 ">
         <ForecastList />
       </div>
-      <div className="col-span-2  rounded-md p-1 h-[450px]">
+      <div className="col-span-1 md:col-span-2  rounded-md p-1 h-[450px]">
         <WeatherMap />
       </div>
     </div>

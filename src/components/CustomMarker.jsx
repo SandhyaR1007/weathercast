@@ -11,7 +11,7 @@ const CustomMarker = () => {
         src={`${GET_ICON}${weatherDetails?.icon}.png`}
         alt=""
       />
-      <span className="text-sm font-semibold ">
+      <span className="text-xs font-semibold ">
         {weatherDetails?.description}
       </span>
     </div>

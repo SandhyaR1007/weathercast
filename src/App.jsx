@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 
 const App = () => {
   return (
-    <div className="py-10 px-32 ">
+    <div className="py-10 px-10 md:px-32 ">
       <Home />
     </div>
   );
