@@ -1,8 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* For Firefox Browser */
+  scrollbar-width: thin;
+  scrollbar-color: currentColor #fff;
+}
+
+/* For Chrome, EDGE, Opera, Others */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 body {
-  background-image: url("https://wallpapercave.com/download/anime-white-and-purple-landscape-wallpapers-wp5250055");
+  background-image: url("https://res.cloudinary.com/dwdcib0hv/image/upload/v1688658328/projects/afxx6y4f8ev31trtlykc.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
