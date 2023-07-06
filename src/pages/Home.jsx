@@ -11,8 +11,14 @@ import { useLocationContext } from "../context/LocationContext";
 import Loader from "../components/Loader";
 
 const Home = () => {
-  const { coordinates, setWeatherDetails, loading, setLoading } =
-    useLocationContext();
+  const {
+    coordinates,
+    setWeatherDetails,
+    loading,
+    setLoading,
+    isPermission,
+    getLocation,
+  } = useLocationContext();
   const [weatherData, setWeatherData] = useState([]);
   const [highlightsData, setHighlightsData] = useState({});
   useEffect(() => {
@@ -53,7 +59,7 @@ const Home = () => {
       }, 200);
     }
   };
-  return (
+  return isPermission ? (
     <div className="grid grid-cols-1  lg:grid-cols-3 gap-3">
       <div className="col-span-1 ">
         {loading ? <Loader /> : <TodayWeatherCard weatherData={weatherData} />}
@@ -71,6 +77,11 @@ const Home = () => {
       <div className="col-span-1 md:col-span-2  rounded-md p-1 h-[450px]">
         <WeatherMap />
       </div>
+    </div>
+  ) : (
+    <div className="h-80 w-full flex flex-col justify-center items-center text-white ">
+      <h1 className="text-3xl"> Please Give Location Permission</h1>
+      <button onClick={() => getLocation()}>Allow</button>
     </div>
   );
 };

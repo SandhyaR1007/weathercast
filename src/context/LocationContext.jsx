@@ -12,6 +12,7 @@ export const LocationContextProvider = ({ children }) => {
     description: "",
   });
   const [loading, setLoading] = useState(false);
+  const [isPermission, setIsPermission] = useState(false);
   useEffect(() => {
     setLoading(true);
     if (navigator.geolocation) {
@@ -19,19 +20,16 @@ export const LocationContextProvider = ({ children }) => {
         .query({ name: "geolocation" })
         .then(function (result) {
           if (result.state === "granted") {
-            navigator.geolocation.getCurrentPosition(function (position) {
-              console.log("Latitude is :", position.coords.latitude);
-              console.log("Longitude is :", position.coords.longitude);
-              setCoordinates({
-                lat: position.coords.latitude,
-                lon: position.coords.longitude,
-              });
-            });
+            setIsPermission(true);
+            getLocation();
             setLoading(false);
           } else if (result.state === "prompt") {
             console.log(result.state);
           } else if (result.state === "denied") {
-            alert("Please give location permissions");
+            if (confirm("Please give Location Access")) {
+              getLocation();
+            } else {
+            }
           }
           result.onchange = function () {
             console.log(result.state);
@@ -41,6 +39,18 @@ export const LocationContextProvider = ({ children }) => {
       alert("Sorry Not available!");
     }
   }, []);
+
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+      setCoordinates({
+        lat: position.coords.latitude,
+        lon: position.coords.longitude,
+      });
+    });
+    setIsPermission(true);
+  };
   return (
     <LocationContext.Provider
       value={{
@@ -50,6 +60,8 @@ export const LocationContextProvider = ({ children }) => {
         setWeatherDetails,
         loading,
         setLoading,
+        isPermission,
+        getLocation,
       }}
     >
       {children}
