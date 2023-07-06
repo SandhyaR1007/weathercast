@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import TodayWeatherCard from "../components/TodayWeatherCard";
-import HighlightsContainer from "../components/HighlightsContainer";
+
 import { getTodaysWeatherService } from "../services/apiServices";
+import {
+  ForecastList,
+  HighlightsContainer,
+  TodayWeatherCard,
+} from "../components";
 
 const Home = () => {
   const [weatherData, setWeatherData] = useState([]);
@@ -23,7 +27,7 @@ const Home = () => {
           ...data?.main,
           ...data?.wind,
           ...data?.sys,
-          visiblity: data?.visiblity,
+          visibility: data?.visibility,
         });
       }
     } catch (err) {
@@ -35,10 +39,12 @@ const Home = () => {
       <div className="col-span-1 ">
         <TodayWeatherCard weatherData={weatherData} />
       </div>
-      <div className="col-span-2 border">
+      <div className="col-span-2 ">
         <HighlightsContainer highlightsData={highlightsData} />
       </div>
-      <div className="col-span-1 border">History</div>
+      <div className="col-span-1 ">
+        <ForecastList />
+      </div>
       <div className="col-span-2 border">Map</div>
     </div>
   );
