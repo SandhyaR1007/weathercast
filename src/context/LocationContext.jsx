@@ -42,8 +42,6 @@ export const LocationContextProvider = ({ children }) => {
 
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
       setCoordinates({
         lat: position.coords.latitude,
         lon: position.coords.longitude,

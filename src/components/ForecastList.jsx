@@ -19,7 +19,7 @@ const ForecastList = () => {
           feels_like: data?.main?.feels_like,
           temp: data?.main?.temp,
         }));
-        console.log(details);
+
         setForecastData(details);
       }
     } catch (err) {

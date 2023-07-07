@@ -3,7 +3,6 @@ import HighlightCard from "./HighlightCard";
 import moment from "moment";
 
 const HighlightsContainer = ({ highlightsData }) => {
-  console.log(highlightsData);
   const data = [
     {
       name: "Wind",

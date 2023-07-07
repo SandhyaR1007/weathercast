@@ -1,6 +1,7 @@
 import React from "react";
 import { GET_ICON } from "../services/apiUrls";
 import { convertKelvinToCelsius } from "../utils";
+import moment from "moment/moment";
 
 const TodayWeatherCard = ({ weatherData }) => {
   return (
@@ -22,7 +23,7 @@ const TodayWeatherCard = ({ weatherData }) => {
       <div className=" flex flex-col gap-2">
         <hr />
         <p className="text-sm">{weatherData?.place}</p>
-        <p className="text-sm">24 July,2023 5:01AM</p>
+        <p className="text-sm">{moment(new Date()).format("llll")}</p>
       </div>
     </div>
   );
