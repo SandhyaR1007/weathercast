@@ -1,8 +1,6 @@
-# Weather Cast - Simple Weather App
+# weathercast - Simple Weather App
 
-![Weather Cast](screenshot.png)
-
-Weather Cast is a simple weather app built using React.js and Tailwind CSS. It leverages the OpenWeather API to provide users with the current weather, 5-day forecast, and other weather highlights. Additionally, the app features location access, allowing users to view the weather for their current location. It incorporates OpenStreetMap to display a draggable marker, allowing users to select a specific location and retrieve the weather details for that location.
+Weather Cast is a simple weather app built using React.js and Tailwind CSS. It leverages the OpenWeather API to provide users with the current weather, 5-day forecast, and other weather highlights. Additionally, the app features location access, allowing users to view the weather for their current location. It incorporates Pegion Maps to display a draggable marker, allowing users to select a specific location and retrieve the weather details for that location.
 
 ## Live Demo
 
@@ -21,7 +19,7 @@ Weather Cast is a simple weather app built using React.js and Tailwind CSS. It l
 - React.js: Front-end JavaScript library for building user interfaces.
 - Tailwind CSS: A utility-first CSS framework for rapid UI development.
 - OpenWeather API: To fetch weather data for various locations.
-- OpenStreetMap: For displaying the map and draggable marker feature.
+- Pegion Maps: For displaying the map and draggable marker feature.
 
 ## Getting Started
 
@@ -35,3 +33,6 @@ cd weather-cast
 npm install
 npm start
 ```
+![Weather Cast](![image](https://github.com/SandhyaR1007/weathercast/assets/47480884/078ff4e1-66af-4c11-b770-e333bc52d029)
+)
+![Uploading image.png…]()
