@@ -33,6 +33,7 @@ cd weather-cast
 npm install
 npm start
 ```
-![Weather Cast](![image](https://github.com/SandhyaR1007/weathercast/assets/47480884/078ff4e1-66af-4c11-b770-e333bc52d029)
+![Weather Cast](![image](https://github.com/SandhyaR1007/weathercast/assets/w1)
 )
-![Uploading image.png…]()
+!(https://github.com/SandhyaR1007/weathercast/assets/w1)(https://github.com/SandhyaR1007/weathercast/assets/w2)
+!(https://github.com/SandhyaR1007/weathercast/assets/w3)
