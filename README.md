@@ -33,4 +33,4 @@ cd weather-cast
 npm install
 npm start
 ```
-!([w1.png](https://github.com/SandhyaR1007/weathercast/blob/main/src/assets/w1.png))
+!(https://github.com/SandhyaR1007/weathercast/blob/main/src/assets/w1.png)
